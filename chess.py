@@ -12,11 +12,30 @@ root = Tk()
 board = Canvas(root,width =720,height =720)
 board.pack()
 
+
 xsquarecounter = 1
 ysquarecounter = 1
 alternate = 1
 while xsquarecounter <=8:
-    alternate = alternate * -1 
+    alternate = alternate * -1
+    
+    if xsquarecounter == 1:
+        letter1 = "a"
+    if xsquarecounter == 2:
+        letter1 = "b"
+    if xsquarecounter == 3:
+        letter1 = "c"
+    if xsquarecounter == 4:
+        letter1 = "d"
+    if xsquarecounter == 5:
+        letter1 = "e"
+    if xsquarecounter == 6:
+        letter1 = "f"
+    if xsquarecounter == 7:
+        letter1 = "g"
+    if xsquarecounter == 8:
+        letter1 = "h"
+
     while ysquarecounter <=8:
         alternate = alternate * -1 
         nwcornerx = (xsquarecounter * 90) - 90
@@ -24,11 +43,14 @@ while xsquarecounter <=8:
         secornerx = (xsquarecounter * 90)
         secornery = (ysquarecounter * 90)
         if alternate == 1:
-            board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'red')
+            categorizer = letter1 + str(ysquarecounter)
+            board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'red',tag = categorizer)
+            vars()[categorizer] = board.coords(categorizer)
         if alternate == -1:
-            board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'blue')
+            categorizer = letter1 + str(ysquarecounter)
+            board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'blue',tag = categorizer)
+            vars()[categorizer] = board.coords(categorizer)
         ysquarecounter = ysquarecounter + 1
-    print alternate
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
             
@@ -72,25 +94,84 @@ scaledbishop = bishop1.scalemethod()
 knight1 = scaler(0.35,knight)
 scaledknight = knight1.scalemethod()
 
-king1 = scaler(0.4,king)
+king1 = scaler(0.35,king)
 scaledking = king1.scalemethod()
 
 queen1 = scaler(0.35,queen)
 scaledqueen = queen1.scalemethod()
 
+piecelist = []
 
+pawnb1 = board.create_polygon(scaledpawn,tag = 'pawnb1')
+piecelist.append(pawnb1)
+pawnb2 = board.create_polygon(scaledpawn,tag = 'pawnb2')
+piecelist.append(pawnb2)
+pawnb3 = board.create_polygon(scaledpawn,tag = 'pawnb3')
+piecelist.append(pawnb3)
+pawnb4 = board.create_polygon(scaledpawn,tag = 'pawnb4')
+piecelist.append(pawnb4)
+pawnb5 = board.create_polygon(scaledpawn,tag = 'pawnb5')
+piecelist.append(pawnb5)
+pawnb6 = board.create_polygon(scaledpawn,tag = 'pawnb6')
+piecelist.append(pawnb6)
+pawnb7 = board.create_polygon(scaledpawn,tag = 'pawnb7')
+piecelist.append(pawnb7)
+pawnb8 = board.create_polygon(scaledpawn,tag = 'pawnb8')
+piecelist.append(pawnb8)
 
-pawn = board.create_polygon(scaledpawn,tag = 'pawn')
-board.move('pawn',0,50)
-rook = board.create_polygon(scaledrook,tag = 'rook')
-board.move('rook',50,0)
-bishop = board.create_polygon(scaledbishop,tag = 'bishop')
-board.move('bishop',0,100)
-knight = board.create_polygon(scaledknight,tag = 'knight')
-board.move('knight',100,0)
-king = board.create_polygon(scaledking,tag = 'king')
-board.move('king',200,0)
-queen = board.create_polygon(scaledqueen,tag = 'queen')
-board.move('queen',0,200)
+rookb1 = board.create_polygon(scaledrook,tag = 'rookb1')
+piecelist.append(rookb1)
+rookb2 = board.create_polygon(scaledrook,tag = 'rookb2')
+piecelist.append(rookb2)
+bishopb1 = board.create_polygon(scaledbishop,tag = 'bishopb1')
+piecelist.append(bishopb1)
+bishopb2 = board.create_polygon(scaledbishop,tag = 'bishopb2')
+piecelist.append(bishopb2)
+knightb1 = board.create_polygon(scaledknight,tag = 'knightb1')
+piecelist.append(knightb1)
+knightb2 = board.create_polygon(scaledknight,tag = 'knightb2')
+piecelist.append(knightb2)
+kingb = board.create_polygon(scaledking,tag = 'kingb')
+piecelist.append(kingb)
+queenb = board.create_polygon(scaledqueen,tag = 'queenb')
+piecelist.append(queenb)
+
+pawnw1 = board.create_polygon(scaledpawn,tag = 'pawnw1',fill = 'antique white')
+piecelist.append(pawnw1)
+pawnw2 = board.create_polygon(scaledpawn,tag = 'pawnw2',fill = 'antique white')
+piecelist.append(pawnw2)
+pawnw3 = board.create_polygon(scaledpawn,tag = 'pawnw3',fill = 'antique white')
+piecelist.append(pawnw3)
+pawnw4 = board.create_polygon(scaledpawn,tag = 'pawnw4',fill = 'antique white')
+piecelist.append(pawnw4)
+pawnw5 = board.create_polygon(scaledpawn,tag = 'pawnw5',fill = 'antique white')
+piecelist.append(pawnw5)
+pawnw6 = board.create_polygon(scaledpawn,tag = 'pawnw6',fill = 'antique white')
+piecelist.append(pawnw6)
+pawnw7 = board.create_polygon(scaledpawn,tag = 'pawnw7',fill = 'antique white')
+piecelist.append(pawnw7)
+pawnw8 = board.create_polygon(scaledpawn,tag = 'pawnw8',fill = 'antique white')
+piecelist.append(pawnw8)
+
+rookw1 = board.create_polygon(scaledrook,tag = 'rookw1',fill = 'antique white')
+piecelist.append(rookw1)
+rookw2 = board.create_polygon(scaledrook,tag = 'rookw2',fill = 'antique white')
+piecelist.append(rookw2)
+bishopw1 = board.create_polygon(scaledbishop,tag = 'bishopw1',fill = 'antique white')
+piecelist.append(bishopw1)
+bishopw2 = board.create_polygon(scaledbishop,tag = 'bishopw2',fill = 'antique white')
+piecelist.append(bishopw2)
+knightw1 = board.create_polygon(scaledknight,tag = 'knightw1',fill = 'antique white')
+piecelist.append(knightw1)
+knightw2 = board.create_polygon(scaledknight,tag = 'knightw2',fill = 'antique white')
+piecelist.append(knightw2)
+kingw = board.create_polygon(scaledking,tag = 'kingw',fill = 'antique white')
+piecelist.append(kingw)
+queenw = board.create_polygon(scaledqueen,tag = 'queenw',fill = 'antique white')
+piecelist.append(queenw)
+
+for element in piecelist:
+    #unfinished
 root.mainloop()
+
 
