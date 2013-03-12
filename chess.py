@@ -2,7 +2,7 @@ from Tkinter import *
 pawn = [200, 200, 240, 200, 270, 230, 270, 270, 240, 300, 240, 320, 250, 420, 270, 460, 280, 470, 300, 470, 310, 480, 310, 490, 310, 500, 210, 500, 180, 500, 140, 500, 140, 480, 150, 470, 170, 470, 190, 420, 200, 300, 170, 270, 170, 230, 200, 200]
 rook = [200, 230, 220, 230, 220, 250, 230, 250, 230, 230, 250, 230, 250, 250, 260, 250, 260, 230, 280, 230, 280, 250, 280, 260, 270, 280, 260, 310, 260, 340, 270, 370, 280, 390, 290, 390, 300, 400, 300, 410, 240, 410, 210, 410, 180, 410, 180, 400, 190, 390, 200, 390, 210, 370, 220, 340, 220, 310, 210, 280, 200, 260, 200, 230]
 bishop = [200, 160, 210, 160, 220, 160, 230, 170, 230, 190, 220, 200, 230, 210, 240, 230, 250, 250, 250, 290, 240, 310, 230, 330, 230, 370, 240, 380, 250, 380, 260, 390, 260, 400, 210, 400, 160, 400, 160, 390, 170, 380, 180, 380, 190, 370, 190, 330, 180, 310, 170, 290, 170, 250, 180, 230, 190, 210, 200, 200, 190, 190, 190, 170, 200, 160]
-knight = [200, 160, 200, 150, 220, 150, 230, 160, 230, 170, 250, 170, 250, 180, 240, 190, 250, 210, 250, 230, 230, 270, 230, 300, 250, 330, 250, 340, 240, 350, 240, 360, 250, 360, 260, 370, 260, 380, 150, 380, 150, 370, 160, 360, 170, 360, 170, 350, 160, 340, 150, 320, 150, 300, 150, 290, 170, 260, 180, 250, 170, 240, 160, 230, 150, 230, 140, 230, 130, 230, 120, 220, 120, 200, 130, 190, 160, 190, 180, 180, 190, 170, 200, 170, 200, 160]
+knight = [200, 173, 200, 163, 220, 163, 230, 173, 230, 183, 250, 183, 250, 193, 240, 203, 250, 223, 250, 243, 230, 283, 230, 313, 250, 343, 250, 353, 240, 363, 240, 373, 250, 373, 260, 383, 260, 393, 150, 393, 150, 383, 160, 373, 170, 373, 170, 363, 160, 353, 150, 333, 150, 313, 150, 303, 170, 273, 180, 263, 170, 253, 160, 243, 150, 243, 140, 243, 130, 243, 120, 233, 120, 213, 130, 203, 160, 203, 180, 193, 190, 183, 200, 183, 200, 173]
 king = [230, 210, 230, 190, 240, 190, 240, 210, 260, 210, 260, 220, 240, 220, 240, 250, 280, 250, 260, 290, 270, 290, 270, 310, 260, 310, 260, 390, 260, 400, 270, 400, 280, 410, 280, 420, 240, 420, 230, 420, 190, 420, 190, 410, 200, 400, 210, 400, 210, 310, 200, 310, 200, 290, 210, 290, 190, 250, 230, 250, 230, 220, 210, 220, 210, 210, 230, 210]
 queen = [200, 200, 190, 230, 180, 210, 170, 230, 160, 210, 170, 250, 180, 270, 190, 280, 170, 300, 190, 310, 180, 310, 180, 320, 190, 320, 200, 330, 200, 410, 190, 420, 190, 430, 270, 430, 270, 420, 260, 410, 260, 330, 270, 320, 280, 320, 280, 310, 270, 310, 290, 300, 270, 280, 280, 270, 290, 250, 300, 210, 290, 230, 280, 210, 270, 230, 260, 200, 200,200]
 startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','a1','b1','c1','d1','e1','f1','g1','h1','a8','b8','c8','d8','e8','f8','g8','h8','a7','b7','c7','d7','e7','f7','g7','h7']
@@ -95,7 +95,7 @@ scaledrook = rook1.scalemethod()
 bishop1 = scaler(0.3,bishop)
 scaledbishop = bishop1.scalemethod()
 
-knight1 = scaler(0.27,knight)
+knight1 = scaler(0.3,knight)
 scaledknight = knight1.scalemethod()
 
 king1 = scaler(0.35,king)
@@ -208,6 +208,7 @@ for element in piecelist:
     finaly = ycent/divisor
     finalcent = [fullstring,finalx,finaly]
     centlist.append(finalcent)
+
 centroidlist = []    
 counter = 1
 newlist = []
@@ -240,22 +241,22 @@ for element in centlist:
 white = 1
 black = 0
 counter = 1
+piecequotes = []
 done = False
 while done == False:
     if white == 1:
         stringcolor = 'white'
         sput = stringcolor + str(counter)
         if counter >= 9:
-            board.move(sput,65,-60)
+            board.move(sput,57,-60)
         else:
             board.move(sput,103,175)
     if black == 1:
         white = 0
         stringcolor = 'black'
         sput = stringcolor + str(counter)
-        print board.coords(sput)
         if counter >= 9:
-            board.move(sput,60,30)
+            board.move(sput,58,30)
         else:
             board.move(sput,110,85)
     if counter == 16 and black == 1:
@@ -263,7 +264,54 @@ while done == False:
     if counter == 16:
         black = 1
         counter = 0
+    piecequotes.append(sput)
     counter = counter + 1
 board.move('white1',-100,-180)
+bestx = 100
+besty = 100
 
+newpiecelist = []
+for element in centlist:
+    newpiecelist.append(element[0])
+coordlist = []
+for element in newpiecelist:
+    coords = board.coords(element)
+    indexer = [element,coords]
+    coordlist.append(indexer)
+
+
+def possible(event):
+    xposit = event.x
+    yposit = event.y
+    coordlist = []
+    for element in newpiecelist:
+        coords = board.coords(element)
+        indexer = [element,coords]
+        coordlist.append(indexer)
+    
+    for element in coordlist:
+        
+        thingone = element[1]
+        alternate = 1
+        for element in thingone:
+            if alternate = 1:
+                
+                
+        
+board.bind('<Button-1>',possible)
+
+
+
+    
+
+    
+    
+    
+    
+    
+board.update()   
 root.mainloop()
+
+
+
+        
