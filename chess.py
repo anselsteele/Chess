@@ -14,6 +14,7 @@ xsquarecounter = 1
 ysquarecounter = 1
 alternate = 1
 squaredata = []
+best = 0
 
 while xsquarecounter <=8:
     alternate = alternate * -1
@@ -278,38 +279,75 @@ for element in newpiecelist:
     coords = board.coords(element)
     indexer = [element,coords]
     coordlist.append(indexer)
-
-
-def possible(event):
-    xposit = event.x
-    yposit = event.y
-    coordlist = []
-    for element in newpiecelist:
-        coords = board.coords(element)
-        indexer = [element,coords]
-        coordlist.append(indexer)
+while True:
     
-    for element in coordlist:
+    def possible(event):
+        xposit = event.x
+        yposit = event.y
+        coordlist = []
+        for element in newpiecelist:
+            coords = board.coords(element)
+            indexer = [element,coords]
+            coordlist.append(indexer)
+        boundarylist = []
+        for element in coordlist:
+            tag = element[0]
+            thingone = element[1]
+            alternate = 1
+            biggestx = 0
+            biggesty = 0
+            smallestx = 720
+            smallesty = 720
+            for element in thingone:
+                if alternate == 1:
+                    if element > biggestx:
+                        biggestx = element
+                    if element < smallestx:
+                        smallestx = element
+                if alternate == -1:
+                    if element > biggesty:
+                        biggesty = element
+                    if element < smallesty:
+                        smallesty = element
+                alternate = alternate * -1
+            boundary = [tag,biggestx,biggesty,smallestx,smallesty]
+            boundarylist.append(boundary)
+    
+        xevent = event.x
+        yevent = event.y
+        for element in boundarylist:
+            biggestx = element[1]
+            biggesty = element[2]
+            smallestx = element[3]
+            smallesty = element[4]
+            if xevent >=smallestx and xevent <= biggestx:
+                if yevent >=smallesty and yevent <= biggesty:
+                    global best
+                    best = element[0]
+    
+
         
-        thingone = element[1]
-        alternate = 1
-        for element in thingone:
-            if alternate = 1:
-                
-                
-        
-board.bind('<Button-1>',possible)
+    board.bind('<Button-1>',possible)
 
+    if best != 0:
+        for element in newpiecelist:
+            bwcolor = ''
+            tagger = element
+            print newpiecelist
+            coords = board.coords(tagger)
+            board.delete(tagger)
+            for char in tagger:
+                if char == 'b':
+                    bwcolor = 'black'
+                if char == 'w':
+                    bwcolor = 'white'
+            board.create_polygon(coords,tag = tagger,fill = bwcolor)
+        coords = board.coords(best)
+        board.delete(best)
+        board.create_polygon(coords,tag = best,fill = 'green')
+        best = 0
 
-
-    
-
-    
-    
-    
-    
-    
-board.update()   
+    board.update()   
 root.mainloop()
 
 
