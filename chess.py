@@ -1,4 +1,5 @@
 from Tkinter import *
+import math
 pawn = [200, 200, 240, 200, 270, 230, 270, 270, 240, 300, 240, 320, 250, 420, 270, 460, 280, 470, 300, 470, 310, 480, 310, 490, 310, 500, 210, 500, 180, 500, 140, 500, 140, 480, 150, 470, 170, 470, 190, 420, 200, 300, 170, 270, 170, 230, 200, 200]
 rook = [200, 230, 220, 230, 220, 250, 230, 250, 230, 230, 250, 230, 250, 250, 260, 250, 260, 230, 280, 230, 280, 250, 280, 260, 270, 280, 260, 310, 260, 340, 270, 370, 280, 390, 290, 390, 300, 400, 300, 410, 240, 410, 210, 410, 180, 410, 180, 400, 190, 390, 200, 390, 210, 370, 220, 340, 220, 310, 210, 280, 200, 260, 200, 230]
 bishop = [200, 160, 210, 160, 220, 160, 230, 170, 230, 190, 220, 200, 230, 210, 240, 230, 250, 250, 250, 290, 240, 310, 230, 330, 230, 370, 240, 380, 250, 380, 260, 390, 260, 400, 210, 400, 160, 400, 160, 390, 170, 380, 180, 380, 190, 370, 190, 330, 180, 310, 170, 290, 170, 250, 180, 230, 190, 210, 200, 200, 190, 190, 190, 170, 200, 160]
@@ -17,6 +18,7 @@ squaredata = []
 best = 0
 whiteturn = 1
 blackturn = 0
+selected = 0
 
 while xsquarecounter <=8:
     alternate = alternate * -1
@@ -281,76 +283,79 @@ for element in newpiecelist:
     coords = board.coords(element)
     indexer = [element,coords]
     coordlist.append(indexer)
+    
+def possible(event):
+    global selected
+    if selected == 0:
+        xposit = event.x
+        yposit = event.y
+        coordlist = []
+        for element in newpiecelist:
+            coords = board.coords(element)
+            indexer = [element,coords]
+            coordlist.append(indexer)
+        boundarylist = []
+        for element in coordlist:
+            tag = element[0]
+            thingone = element[1]
+            alternate = 1
+            biggestx = 0
+            biggesty = 0
+            smallestx = 720
+            smallesty = 720
+            for element in thingone:
+                if alternate == 1:
+                    if element > biggestx:
+                        biggestx = element
+                    if element < smallestx:
+                        smallestx = element
+                if alternate == -1:
+                    if element > biggesty:
+                        biggesty = element
+                    if element < smallesty:
+                        smallesty = element
+                alternate = alternate * -1
+            boundary = [tag,biggestx,biggesty,smallestx,smallesty]
+            boundarylist.append(boundary)
+        global xevent
+        global yevent
+        xevent = event.x
+        yevent = event.y
+        for element in boundarylist:
+            biggestx = element[1]
+            biggesty = element[2]
+            smallestx = element[3]
+            smallesty = element[4]
+            if xevent >=smallestx and xevent <= biggestx:
+                if yevent >=smallesty and yevent <= biggesty:
+                    global best
+                    best = element[0]
+    if selected != 0:
+        newxevent = 0
+        newyevent = 0
+        dispx = 0
+        dispy = 0
+        rawxmover = 0
+        rawymover = 0
+        xmover = 0
+        ymover = 0
+        finalx = 0
+        finaly = 0
+        newxevent = event.x
+        newyevent = event.y
+        dispx = newxevent -xevent
+        dispy = newyevent -yevent
+        rawxmover = dispx/90
+        rawymover = dispy/90
+        xmover = math.floor(rawxmover)
+        ymover = math.floor(rawymover)
+        finalx = xmover * 90
+        finaly = ymover * 90
+        
+        board.move(selected,finalx,finaly)
+        print selected
+        selected = 0
 while True:
-    
-    def possible(event,selected):
-        if selected == 0:
-            xposit = event.x
-            yposit = event.y
-            coordlist = []
-            for element in newpiecelist:
-                coords = board.coords(element)
-                indexer = [element,coords]
-                coordlist.append(indexer)
-            boundarylist = []
-            for element in coordlist:
-                tag = element[0]
-                thingone = element[1]
-                alternate = 1
-                biggestx = 0
-                biggesty = 0
-                smallestx = 720
-                smallesty = 720
-                for element in thingone:
-                    if alternate == 1:
-                        if element > biggestx:
-                            biggestx = element
-                        if element < smallestx:
-                            smallestx = element
-                    if alternate == -1:
-                        if element > biggesty:
-                            biggesty = element
-                        if element < smallesty:
-                            smallesty = element
-                    alternate = alternate * -1
-                boundary = [tag,biggestx,biggesty,smallestx,smallesty]
-                boundarylist.append(boundary)
-        
-            xevent = event.x
-            yevent = event.y
-            for element in boundarylist:
-                biggestx = element[1]
-                biggesty = element[2]
-                smallestx = element[3]
-                smallesty = element[4]
-                if xevent >=smallestx and xevent <= biggestx:
-                    if yevent >=smallesty and yevent <= biggesty:
-                        global best
-                        best = element[0]
-    
-
-        
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     if best != 0:
         for element in newpiecelist:
@@ -371,12 +376,11 @@ while True:
         coords = board.coords(best)
         board.delete(best)
         board.create_polygon(coords,tag = best,fill = 'green')
+        selected = best
         best = 0
+        
+        
         
     board.bind('<Button-1>',possible)
     board.update()   
 root.mainloop()
-
-
-
-        
