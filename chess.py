@@ -351,12 +351,26 @@ def possible(event):
         ymover = math.floor(rawymover)
         finalx = xmover * 90
         finaly = ymover * 90
-        
-        board.move(selected,finalx,finaly)
-        print selected
+        xconstant = 90
+        yconstant = 90
+        global squaredata
+        for element in squaredata:
+            elementx = element[1]
+            elementy = element[2]
+            if abs(finalx - elementx) < xconstant:
+                xconstant = abs(finalx - elementx)
+                xelement = elementx
+            if abs(finaly - elementy) < constant:
+                yconstant = abs(finaly - elementy)
+                yelement = elementy
+                
+        board.move(selected,xelement,yelement)
         selected = 0
 while True:
     
+
+    
+
     if best != 0:
         for element in newpiecelist:
             bwcolor = ''
