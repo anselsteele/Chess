@@ -19,6 +19,10 @@ best = 0
 whiteturn = 1
 blackturn = 0
 selected = 0
+xevent = 0
+yevent = 0
+xevent1 = 0
+yevent1 = 0
 
 while xsquarecounter <=8:
     alternate = alternate * -1
@@ -321,6 +325,23 @@ def possible(event):
         global yevent
         xevent = event.x
         yevent = event.y
+        global xevent1
+        global yevent1
+        xevent1 = xevent
+        yevent1 = yevent
+        xconstant = 500
+        yconstant = 500 
+        for element in squaredata:
+            elementx = element[1]
+            elementy = element[2]
+            if abs(xevent1 - elementx) < xconstant:
+                xconstant = abs(xevent1 - elementx)
+                xevent = elementx
+            if abs(yevent1 - elementy) < yconstant:
+                yconstant = abs(yevent1 - elementy)
+                yevent = elementy
+        print xevent, yevent
+
         for element in boundarylist:
             biggestx = element[1]
             biggesty = element[2]
@@ -331,6 +352,7 @@ def possible(event):
                     global best
                     best = element[0]
     if selected != 0:
+        print xevent,yevent
         newxevent = 0
         newyevent = 0
         dispx = 0
@@ -343,6 +365,8 @@ def possible(event):
         finaly = 0
         newxevent = event.x
         newyevent = event.y
+        print newxevent
+        print newyevent
         dispx = newxevent -xevent
         dispy = newyevent -yevent
         rawxmover = dispx/90
@@ -351,21 +375,26 @@ def possible(event):
         ymover = math.floor(rawymover)
         finalx = xmover * 90
         finaly = ymover * 90
-        xconstant = 90
-        yconstant = 90
-        global squaredata
+        xconstant = 500
+        yconstant = 500
+        xelement = 0
+        yelement = 0
         for element in squaredata:
             elementx = element[1]
             elementy = element[2]
-            if abs(finalx - elementx) < xconstant:
-                xconstant = abs(finalx - elementx)
+            if abs(newxevent - elementx) < xconstant:
+                xconstant = abs(newxevent - elementx)
                 xelement = elementx
-            if abs(finaly - elementy) < constant:
-                yconstant = abs(finaly - elementy)
+            if abs(newyevent - elementy) < yconstant:
+                yconstant = abs(newyevent - elementy)
                 yelement = elementy
+        print xelement,yelement
+        xdisp = xelement - xevent
+        ydisp = yelement - yevent
                 
-        board.move(selected,xelement,yelement)
+        board.move(selected,xdisp,ydisp)
         selected = 0
+board.bind('<Button-1>',possible)
 while True:
     
 
@@ -395,6 +424,5 @@ while True:
         
         
         
-    board.bind('<Button-1>',possible)
-    board.update()   
+    board.update()  
 root.mainloop()
