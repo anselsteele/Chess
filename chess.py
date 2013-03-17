@@ -11,6 +11,7 @@ root = Tk()
 board = Canvas(root,width = 720,height = 720)
 board.pack()
 
+position = [['white1','a1'],['white2','b1'],['white3','c1'],['white4','d1'],['white5','e1'],['white6','f1'],['white7','g1'],['white8','h1'],['white9','a2'],['white10','b2'],['white11','c2'],['white12','d2'],['white13','e2'],['white14','f2'],['white15','g2'],['white16','h2'],['black1','a8'],['black2','b8'],['black3','c8'],['black4','d8'],['black5','e8'],['black6','f8'],['black7','g8'],['black8','h8'],['black9','a7'],['black10','b7'],['black11','c7'],['black12','d7'],['black13','e7'],['black14','f7'],['black15','g7'],['black16','h7']]
 xsquarecounter = 1
 ysquarecounter = 1
 alternate = 1
@@ -65,7 +66,6 @@ while xsquarecounter <=8:
         ysquarecounter = ysquarecounter+1
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
-#print squaredata
 
 class scaler:
     def __init__(self,scale1,polystring):
@@ -340,7 +340,7 @@ def possible(event):
             if abs(yevent1 - elementy) < yconstant:
                 yconstant = abs(yevent1 - elementy)
                 yevent = elementy
-        print xevent, yevent
+        #print xevent, yevent
 
         for element in boundarylist:
             biggestx = element[1]
@@ -352,7 +352,7 @@ def possible(event):
                     global best
                     best = element[0]
     if selected != 0:
-        print xevent,yevent
+        #print xevent,yevent
         newxevent = 0
         newyevent = 0
         dispx = 0
@@ -365,8 +365,6 @@ def possible(event):
         finaly = 0
         newxevent = event.x
         newyevent = event.y
-        print newxevent
-        print newyevent
         dispx = newxevent -xevent
         dispy = newyevent -yevent
         rawxmover = dispx/90
@@ -379,7 +377,9 @@ def possible(event):
         yconstant = 500
         xelement = 0
         yelement = 0
+        finaltag = ''
         for element in squaredata:
+            squaretag = element[0]
             elementx = element[1]
             elementy = element[2]
             if abs(newxevent - elementx) < xconstant:
@@ -388,10 +388,16 @@ def possible(event):
             if abs(newyevent - elementy) < yconstant:
                 yconstant = abs(newyevent - elementy)
                 yelement = elementy
-        print xelement,yelement
+        for element in squaredata:
+            if element[1] == xelement and element[2] == yelement:
+                finaltag = element[0]
+
         xdisp = xelement - xevent
         ydisp = yelement - yevent
-                
+        print squaredata
+        print newxevent
+        print newyevent
+        print finaltag
         board.move(selected,xdisp,ydisp)
         selected = 0
 board.bind('<Button-1>',possible)
