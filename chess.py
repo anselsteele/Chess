@@ -394,11 +394,13 @@ def possible(event):
 
         xdisp = xelement - xevent
         ydisp = yelement - yevent
-        print squaredata
-        print newxevent
-        print newyevent
-        print finaltag
+        print position
+        print selected
         board.move(selected,xdisp,ydisp)
+        for element in position:
+            if element[0] == selected:
+                element[1] = finaltag
+        print position
         selected = 0
 board.bind('<Button-1>',possible)
 while True:
