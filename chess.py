@@ -343,6 +343,7 @@ def possible(event):
         #print xevent, yevent
 
         for element in boundarylist:
+            wbstring = element[0]
             biggestx = element[1]
             biggesty = element[2]
             smallestx = element[3]
@@ -350,7 +351,27 @@ def possible(event):
             if xevent >=smallestx and xevent <= biggestx:
                 if yevent >=smallesty and yevent <= biggesty:
                     global best
-                    best = element[0]
+                    global whiteturn
+                    global blackturn
+                    print whiteturn
+                    print blackturn
+                    if whiteturn == 1:
+                        if wbstring[0] == 'w':
+                            best = wbstring
+                            whiteturn = 0
+                            blackturn = 1
+                        else:
+                            best = 0
+                    else:
+                        if wbstring[0] == 'b':
+                            best = wbstring
+                            whiteturn = 1
+                            blackturn = 0
+                        else:
+                            best = 0
+                            
+                        
+        print best
     if selected != 0:
         #print xevent,yevent
         newxevent = 0
@@ -403,11 +424,8 @@ def possible(event):
         print position
         selected = 0
 board.bind('<Button-1>',possible)
+
 while True:
-    
-
-    
-
     if best != 0:
         for element in newpiecelist:
             bwcolor = ''
@@ -417,12 +435,10 @@ while True:
             for char in tagger:
                 if char == 'b':
                     bwcolor = 'black'
-                    blackturn = 1
-                    whiteturn = 0
+                    
                 if char == 'w':
                     bwcolor = 'white'
-                    blackturn = 0
-                    whiteturn = 1
+                    
             board.create_polygon(coords,tag = tagger,fill = bwcolor)
         coords = board.coords(best)
         board.delete(best)
