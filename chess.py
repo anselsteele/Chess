@@ -24,6 +24,7 @@ xevent = 0
 yevent = 0
 xevent1 = 0
 yevent1 = 0
+moverange = []
 
 while xsquarecounter <=8:
     alternate = alternate * -1
@@ -66,6 +67,25 @@ while xsquarecounter <=8:
         ysquarecounter = ysquarecounter+1
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
+class pmoves:
+    def __init__(self,nametag,posit):
+        self.nametag = nametag
+        self.posit = posit
+    def moverange(self):
+        global moverange
+        moverange = []
+        mbishop = []
+        mknight = []
+        mking = []
+        mqueen = []
+        mpawn = []
+        pletter = posit[0]
+        pnumber = posit[1]
+        number = pnumber
+        if nametag == mbishop:
+            while number <= 8 and letter <= 8:
+            moverange.append()
+            
 
 class scaler:
     def __init__(self,scale1,polystring):
