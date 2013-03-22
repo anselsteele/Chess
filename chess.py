@@ -7,6 +7,7 @@ knight = [200, 173, 200, 163, 220, 163, 230, 173, 230, 183, 250, 183, 250, 193, 
 king = [230, 210, 230, 190, 240, 190, 240, 210, 260, 210, 260, 220, 240, 220, 240, 250, 280, 250, 260, 290, 270, 290, 270, 310, 260, 310, 260, 390, 260, 400, 270, 400, 280, 410, 280, 420, 240, 420, 230, 420, 190, 420, 190, 410, 200, 400, 210, 400, 210, 310, 200, 310, 200, 290, 210, 290, 190, 250, 230, 250, 230, 220, 210, 220, 210, 210, 230, 210]
 queen = [200, 200, 190, 230, 180, 210, 170, 230, 160, 210, 170, 250, 180, 270, 190, 280, 170, 300, 190, 310, 180, 310, 180, 320, 190, 320, 200, 330, 200, 410, 190, 420, 190, 430, 270, 430, 270, 420, 260, 410, 260, 330, 270, 320, 280, 320, 280, 310, 270, 310, 290, 300, 270, 280, 280, 270, 290, 250, 300, 210, 290, 230, 280, 210, 270, 230, 260, 200, 200,200]
 startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','a1','b1','c1','d1','e1','f1','g1','h1','a8','b8','c8','d8','e8','f8','g8','h8','a7','b7','c7','d7','e7','f7','g7','h7']
+letters = ['a','b','c','d','e','f','g','h']
 root = Tk()
 board = Canvas(root,width = 720,height = 720)
 board.pack()
@@ -81,10 +82,53 @@ class pmoves:
         mpawn = []
         pletter = posit[0]
         pnumber = posit[1]
+        positcheck = 0
         number = pnumber
         if nametag == mbishop:
-            while number <= 8 and letter <= 8:
-            moverange.append()
+            letter = 0
+            number = 0
+            unfinished = True
+            while unfinished == True:
+                for element in letters:
+                    if element == pletter:
+                        letterposit = positcheck
+                    positcheck = positcheck + 1
+                completter = letterposit
+                compnumber = pnumber
+                while compnumber <= 8 and completter <=8:
+                    if compnumber != 8:
+                        compnumber = compnumber + 1
+                    if completter != 8:
+                        completter = completter + 1
+                    realletter = letters[completter]
+                    positpoint = realletter + str(compnumber)
+                    moverange.append(positpoint)
+                while compnumber >= 1 and completter <=8:
+                    if compnumber != 1:
+                        compnumber = compnumber + 1
+                    if completter != 8:
+                        completter = completter + 1
+                    realletter = letters[completter]
+                    positpoint = realletter + str(compnumber)
+                    moverange.append(positpoint)
+                while compnumber <= 8 and completter >=1:
+                    if compnumber != 8:
+                        compnumber = compnumber + 1
+                    if completter != 1:
+                        completter = completter + 1
+                    realletter = letters[completter]
+                    positpoint = realletter + str(compnumber)
+                    moverange.append(positpoint)
+                while compnumber >= 1 and completter >=1:
+                    if compnumber != 1:
+                        compnumber = compnumber + 1
+                    if completter != 1:
+                        completter = completter + 1
+                    realletter = letters[completter]
+                    positpoint = realletter + str(compnumber)
+                    moverange.append(positpoint)
+                print moverange
+                
             
 
 class scaler:
