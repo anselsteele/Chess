@@ -15,7 +15,6 @@ queen1 = [200, 200, 190, 180, 210, 190, 220, 170, 230, 190, 250, 180, 240, 200, 
 vanguard1 = [200, 200, 190, 190, 180, 170, 180, 160, 190, 160, 190, 170, 200, 190, 210, 200, 220, 190, 230, 170, 230, 160, 240, 160, 240, 170, 230, 190, 220, 200, 230, 200, 230, 230, 220, 230, 220, 240, 230, 280, 240, 280, 240, 290, 180, 290, 180, 280, 190, 280, 200, 240, 200, 230, 190, 230, 190, 200, 200, 200]
 crusader1 = [200, 200, 200, 190, 190, 190, 180, 190, 180, 160, 170, 160, 170, 150, 190, 150, 190, 180, 200, 180, 200, 170, 230, 170, 230, 180, 240, 180, 240, 150, 260, 150, 260, 160, 250, 160, 250, 190, 230, 190, 230, 200, 220, 210, 230, 250, 240, 250, 240, 260, 190, 260, 190, 250, 200, 250, 210, 210, 200, 200]
 
-print pawn1
 class scaler:
     def __init__(self,scale1,polystring):
        self.polystring = polystring
@@ -64,10 +63,10 @@ scaledbishop = bishop.scalemethod()
 knight = scaler(0.25,knight1)
 scaledknight = knight.scalemethod()
 
-king = scaler(0.25,king1)
+king = scaler(0.3,king1)
 scaledking = king.scalemethod()
 
-queen = scaler(0.25,queen1)
+queen = scaler(0.2,queen1)
 scaledqueen = queen.scalemethod()
 
 crusader = scaler(0.25,crusader1)
@@ -222,5 +221,57 @@ board.create_polygon(piecelist[8],tag = 'black29',fill = 'black')
 board.create_polygon(piecelist[8],tag = 'black30',fill = 'black')
 board.create_polygon(piecelist[8],tag = 'black31',fill = 'black')
 board.create_polygon(piecelist[8],tag = 'black32',fill = 'black')
-print board.coords('black32')
+
+whitecentroids = []
+blackcentroids = []
+counter = 1
+while counter <= 32:
+    xlist = []
+    ylist = []
+    name = 'white' + str(counter)
+    coordlist = board.coords(name)
+    oscillator = 1
+    for element in coordlist:
+        if oscillator == 1:
+            xlist.append(element)
+        if oscillator == -1:
+            ylist.append(element)
+        oscillator = oscillator * -1
+    totalx = 0
+    for element in xlist:
+        totalx = totalx + element
+    totaly = 0
+    for element in ylist:
+        totaly = totaly + element
+    avgx = totalx/len(xlist)
+    avgy = totaly/len(ylist)
+    datapoint = [avgx,avgy]
+    whitecentroids.append(datapoint)
+    counter = counter +1
+counter = 1
+while counter <= 32:
+    xlist = []
+    ylist = []
+    name = 'black' + str(counter)
+    coordlist = board.coords(name)
+    oscillator = 1
+    for element in coordlist:
+        if oscillator == 1:
+            xlist.append(element)
+        if oscillator == -1:
+            ylist.append(element)
+        oscillator = oscillator * -1
+    totalx = 0
+    for element in xlist:
+        totalx = totalx + element
+    totaly = 0
+    for element in ylist:
+        totaly = totaly + element
+    avgx = totalx/len(xlist)
+    avgy = totaly/len(ylist)
+    datapoint = [avgx,avgy]
+    blackcentroids.append(datapoint)
+    counter = counter + 1
+
+
 root.mainloop()
