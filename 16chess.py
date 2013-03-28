@@ -272,6 +272,12 @@ while counter <= 32:
     datapoint = [avgx,avgy]
     blackcentroids.append(datapoint)
     counter = counter + 1
+print whitecentroids
+counter = 1
+while counter <= 32:
+    name = 'white' + str(counter)
+print whitecentroids
+    
 
 
 root.mainloop()
