@@ -277,7 +277,31 @@ counter = 1
 while counter <= 32:
     name = 'white' + str(counter)
 print whitecentroids
-    
+counter = 1
+while counter <= 32:
+    item1 = 'white' + str(counter)
+    wcent = whitecentroids[counter]
+    wcentx = wcent[0]
+    wcenty = wcent[1]
+    squarecent = centroidlist[counter]
+    squarecentx = squarecent[0]
+    squarecenty = squarecent[1]
+    dispx = wcentx - squarecentx
+    dispy = wcenty - squarecenty
+    board.move(item1,dispx,dispy)
 
+counter = 1
+while counter <= 32:
+    item1 = 'black' + str(counter)
+    wcent = whitecentroids[counter]
+    wcentx = wcent[0]
+    wcenty = wcent[1]
+    sqcount = counter + 32
+    squarecent = centroidlist[sqcount]
+    squarecentx = squarecent[0]
+    squarecenty = squarecent[1]
+    dispx = wcentx - squarecentx
+    dispy = wcenty - squarecenty
+    board.move(item1,dispx,dispy)
 
 root.mainloop()
