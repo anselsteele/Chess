@@ -303,5 +303,16 @@ while counter <= 32:
     dispx = wcentx - squarecentx
     dispy = wcenty - squarecenty
     board.move(item1,dispx,dispy)
-
+class mouseclick:
+    def __init__(self,event,selected):
+        self.event = event
+        self.selected = selected
+    def reposit(event,selected):
+        xevent = event[0]
+        yevent = event[1]
+        alternate = 1
+        bestx = 100
+        besty = 100
+        for element in centroidlist:
+            
 root.mainloop()
