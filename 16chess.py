@@ -86,7 +86,7 @@ piecelist.append(scaledpawn)
 startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','a1','b1','c1','d1','e1','f1','g1','h1','a8','b8','c8','d8','e8','f8','g8','h8','a7','b7','c7','d7','e7','f7','g7','h7']
 letters = ['a','b','c','d','e','f','g','h']
 root = Tk()
-board = Canvas(root,width = 720,height = 720)
+board = Canvas(root,width = 500,height = 500)
 
 board.pack()
 
@@ -272,47 +272,43 @@ while counter <= 32:
     datapoint = [avgx,avgy]
     blackcentroids.append(datapoint)
     counter = counter + 1
-print whitecentroids
-counter = 1
-while counter <= 32:
-    name = 'white' + str(counter)
-print whitecentroids
 counter = 1
 while counter <= 32:
     item1 = 'white' + str(counter)
     wcent = whitecentroids[counter]
-    wcentx = wcent[0]
-    wcenty = wcent[1]
-    squarecent = centroidlist[counter]
-    squarecentx = squarecent[0]
-    squarecenty = squarecent[1]
+    wcentx = int(wcent[0])
+    wcenty = int(wcent[1]
+    squarecent = squaredata[counter]
+    squarecentx = squarecent[1]
+    squarecenty = squarecent[2]
     dispx = wcentx - squarecentx
     dispy = wcenty - squarecenty
     board.move(item1,dispx,dispy)
+    counter = counter + 1
 
 counter = 1
 while counter <= 32:
     item1 = 'black' + str(counter)
     wcent = whitecentroids[counter]
-    wcentx = wcent[0]
-    wcenty = wcent[1]
+    wcentx = int(wcent[0])
+    wcenty = int(wcent[1])
     sqcount = counter + 32
-    squarecent = centroidlist[sqcount]
-    squarecentx = squarecent[0]
-    squarecenty = squarecent[1]
+    squarecent = squaredata[sqcount]
+    squarecentx = squarecent[1]
+    squarecenty = squarecent[2]
     dispx = wcentx - squarecentx
     dispy = wcenty - squarecenty
     board.move(item1,dispx,dispy)
+    counter = counter + 1
 class mouseclick:
     def __init__(self,event,selected):
         self.event = event
         self.selected = selected
-    def reposit(event,selected):
+    def reposit(self):
         xevent = event[0]
         yevent = event[1]
         alternate = 1
         bestx = 100
         besty = 100
-        for element in centroidlist:
             
 root.mainloop()
