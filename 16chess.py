@@ -273,12 +273,14 @@ while counter <= 32:
     blackcentroids.append(datapoint)
     counter = counter + 1
 counter = 1
+print whitecentroids
 while counter <= 32:
+    indexcounter = counter -1
     item1 = 'white' + str(counter)
-    wcent = whitecentroids[counter]
+    wcent = whitecentroids[indexcounter]
     wcentx = int(wcent[0])
-    wcenty = int(wcent[1]
-    squarecent = squaredata[counter]
+    wcenty = int(wcent[1])
+    squarecent = squaredata[indexcounter]
     squarecentx = squarecent[1]
     squarecenty = squarecent[2]
     dispx = wcentx - squarecentx
@@ -288,12 +290,13 @@ while counter <= 32:
 
 counter = 1
 while counter <= 32:
+    indexcounter = counter - 1
     item1 = 'black' + str(counter)
-    wcent = whitecentroids[counter]
+    wcent = whitecentroids[indexcounter]
     wcentx = int(wcent[0])
     wcenty = int(wcent[1])
     sqcount = counter + 32
-    squarecent = squaredata[sqcount]
+    squarecent = squaredata[indexcounter]
     squarecentx = squarecent[1]
     squarecenty = squarecent[2]
     dispx = wcentx - squarecentx
@@ -310,5 +313,5 @@ class mouseclick:
         alternate = 1
         bestx = 100
         besty = 100
-            
+board.bind('<Button-One>,reposit')
 root.mainloop()
