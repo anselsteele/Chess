@@ -86,7 +86,7 @@ piecelist.append(scaledpawn)
 startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','a1','b1','c1','d1','e1','f1','g1','h1','a8','b8','c8','d8','e8','f8','g8','h8','a7','b7','c7','d7','e7','f7','g7','h7']
 letters = ['a','b','c','d','e','f','g','h']
 root = Tk()
-board = Canvas(root,width = 500,height = 500)
+board = Canvas(root,width = 720,height = 720)
 
 board.pack()
 
@@ -273,7 +273,6 @@ while counter <= 32:
     blackcentroids.append(datapoint)
     counter = counter + 1
 counter = 1
-print whitecentroids
 while counter <= 32:
     indexcounter = counter -1
     item1 = 'white' + str(counter)
@@ -303,15 +302,29 @@ while counter <= 32:
     dispy = wcenty - squarecenty
     board.move(item1,dispx,dispy)
     counter = counter + 1
-class mouseclick:
-    def __init__(self,event,selected):
-        self.event = event
-        self.selected = selected
-    def reposit(self):
-        xevent = event[0]
-        yevent = event[1]
-        alternate = 1
-        bestx = 100
-        besty = 100
-board.bind('<Button-One>,reposit')
+while True:
+    def reposit(event):
+        clicked = -1
+        if clicked == -1:
+            xevent = event.x
+            yevent = event.y
+            comparex = 100
+            comparey = 100
+            for element in squarelist:
+                xele = element[0]
+                yele = element[1]
+                if abs(xevent - xele) < comparex:
+                    comparex = abs(xevent - xele)
+                    bestx = xele
+                if abs(yevent - yele) < comparey:
+                    comparey = abs(yevent - yele)
+                    besty = yele
+            print bestx
+            print besty
+            
+        if clicked == 1:
+            clicked = 1
+        clicked = clicked * -1
+    board.update()        
+    board.bind('<Button-One>,reposit')
 root.mainloop()
