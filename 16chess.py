@@ -42,7 +42,7 @@ class scaler:
             ycounter = ycounter + 2
             loopcounter = loopcounter + 2
         return scalearray1
-magician = scaler(2,magician1)
+magician = scaler(0.25,magician1)
 scaledmagician = magician.scalemethod()
             
 pawn = scaler(0.25,pawn1)
@@ -144,11 +144,13 @@ while xsquarecounter <=16:
             square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'red',tag = identifier)
         if alternate == -1:
             square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'blue',tag = identifier)
+        board.lower(identifier)
         
         squaredata.append(datapoint)
         ysquarecounter = ysquarecounter+1
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
+    print squaredata
 #for element in piecelist:
  #   newlist = []
   #  for coordinate in element:
@@ -172,22 +174,22 @@ board.create_polygon(piecelist[3],tag = 'white13',fill = 'white')
 board.create_polygon(piecelist[2],tag = 'white14',fill = 'white')
 board.create_polygon(piecelist[1],tag = 'white15',fill = 'white')
 board.create_polygon(piecelist[0],tag = 'white16',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white17',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white18',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white19',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white20',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white21',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white22',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white23',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white24',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white25',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white26',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white27',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white28',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white29',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white30',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white31',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white32',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white17',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white18',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white19',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white20',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white21',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white22',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white23',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white24',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white25',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white26',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white27',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white28',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white29',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white30',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white31',fill = 'white')
+board.create_polygon(piecelist[9],tag = 'white32',fill = 'white')
 
 board.create_polygon(piecelist[0],tag = 'black1',fill = 'black')
 board.create_polygon(piecelist[1],tag = 'black2',fill = 'black')
@@ -205,22 +207,22 @@ board.create_polygon(piecelist[3],tag = 'black13',fill = 'black')
 board.create_polygon(piecelist[2],tag = 'black14',fill = 'black')
 board.create_polygon(piecelist[1],tag = 'black15',fill = 'black')
 board.create_polygon(piecelist[0],tag = 'black16',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black17',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black18',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black19',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black20',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black21',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black22',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black23',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black24',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black25',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black26',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black27',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black28',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black29',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black30',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black31',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black32',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black17',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black18',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black19',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black20',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black21',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black22',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black23',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black24',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black25',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black26',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black27',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black28',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black29',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black30',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black31',fill = 'black')
+board.create_polygon(piecelist[9],tag = 'black32',fill = 'black')
 
 whitecentroids = []
 blackcentroids = []
@@ -277,13 +279,13 @@ while counter <= 32:
     indexcounter = counter -1
     item1 = 'white' + str(counter)
     wcent = whitecentroids[indexcounter]
-    wcentx = int(wcent[0])
-    wcenty = int(wcent[1])
+    wcentx = wcent[0]
+    wcenty = wcent[1]
     squarecent = squaredata[indexcounter]
     squarecentx = squarecent[1]
     squarecenty = squarecent[2]
-    dispx = wcentx - squarecentx
-    dispy = wcenty - squarecenty
+    dispx = squarecentx - wcentx
+    dispy = squarecenty - wcenty
     board.move(item1,dispx,dispy)
     counter = counter + 1
 
@@ -291,40 +293,50 @@ counter = 1
 while counter <= 32:
     indexcounter = counter - 1
     item1 = 'black' + str(counter)
-    wcent = whitecentroids[indexcounter]
-    wcentx = int(wcent[0])
-    wcenty = int(wcent[1])
-    sqcount = counter + 32
-    squarecent = squaredata[indexcounter]
+    wcent = blackcentroids[indexcounter]
+    wcentx = wcent[0]
+    wcenty = wcent[1]
+    sqcount = counter + 223
+    squarecent = squaredata[sqcount]
     squarecentx = squarecent[1]
     squarecenty = squarecent[2]
-    dispx = wcentx - squarecentx
-    dispy = wcenty - squarecenty
+    dispx = squarecentx - wcentx
+    dispy = squarecenty - wcenty
     board.move(item1,dispx,dispy)
     counter = counter + 1
+counter = 1
+while counter <=16:
+    item1= 'black' + str(counter)
+    board.move(item1,45,0)
+    counter = counter + 1
+while counter <=32:
+    item1 = 'black' + str(counter)
+    board.move(item1,-45,0)
+    counter = counter + 1
+def reposit(event):
+    clicked = -1
+    if clicked == -1:
+        xevent = event.x
+        yevent = event.y
+        comparex = 100
+        comparey = 100
+        for element in squarelist:
+            xele = element[0]
+            yele = element[1]
+            if abs(xevent - xele) < comparex:
+                comparex = abs(xevent - xele)
+                bestx = xele
+            if abs(yevent - yele) < comparey:
+                comparey = abs(yevent - yele)
+                besty = yele
+        print bestx
+        print besty
 while True:
-    def reposit(event):
-        clicked = -1
-        if clicked == -1:
-            xevent = event.x
-            yevent = event.y
-            comparex = 100
-            comparey = 100
-            for element in squarelist:
-                xele = element[0]
-                yele = element[1]
-                if abs(xevent - xele) < comparex:
-                    comparex = abs(xevent - xele)
-                    bestx = xele
-                if abs(yevent - yele) < comparey:
-                    comparey = abs(yevent - yele)
-                    besty = yele
-            print bestx
-            print besty
+
             
         if clicked == 1:
             clicked = 1
         clicked = clicked * -1
     board.update()        
-    board.bind('<Button-One>,reposit')
+    
 root.mainloop()
