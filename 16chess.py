@@ -275,6 +275,7 @@ while counter <= 32:
     blackcentroids.append(datapoint)
     counter = counter + 1
 counter = 1
+newlist = []
 while counter <= 32:
     indexcounter = counter -1
     item1 = 'white' + str(counter)
@@ -287,8 +288,13 @@ while counter <= 32:
     dispx = squarecentx - wcentx
     dispy = squarecenty - wcenty
     board.move(item1,dispx,dispy)
+    newx = wcentx + dispx
+    newy = wcenty + dispy
+    newdata = [item1,newx,newy]
+    newlist.append(newdata)
     counter = counter + 1
-
+whitecentroids = newlist
+newlist = []
 counter = 1
 while counter <= 32:
     indexcounter = counter - 1
@@ -303,40 +309,98 @@ while counter <= 32:
     dispx = squarecentx - wcentx
     dispy = squarecenty - wcenty
     board.move(item1,dispx,dispy)
+    newx = wcentx + dispx
+    newy = wcenty + dispy 
+    newdata = [item1,newx,newy]
+    newlist.append(newdata)
     counter = counter + 1
+blackcentroids = newlist
+newlist = []
 counter = 1
 while counter <=16:
+    indexcounter = counter - 1
     item1= 'black' + str(counter)
     board.move(item1,45,0)
+    blackcent = blackcentroids[indexcounter]
+    xfix = blackcent[1] + 45
+    yfix = blackcent[2]
+    fixedcent = [blackcent[0],xfix,yfix]
+    newlist.append(fixedcent)
     counter = counter + 1
 while counter <=32:
     item1 = 'black' + str(counter)
     board.move(item1,-45,0)
+    blackcent = blackcentroids[indexcounter]
+    xfix = blackcent[1] - 45
+    yfix = blackcent[2]
+    fixedcent = [blackcent[0],xfix,yfix]
+    newlist.append(fixedcent)
     counter = counter + 1
+blackcentroids = newlist
+clicked = -1
+oldx = 0
+oldy = 0
+
 def reposit(event):
-    clicked = -1
+    global squaredata
+    global clicked
+    global selected
+    global oldx 
+    global oldy
     if clicked == -1:
         xevent = event.x
         yevent = event.y
         comparex = 100
         comparey = 100
-        for element in squarelist:
-            xele = element[0]
-            yele = element[1]
+        for element in squaredata:
+            xele = element[1]
+            yele = element[2]
             if abs(xevent - xele) < comparex:
                 comparex = abs(xevent - xele)
                 bestx = xele
             if abs(yevent - yele) < comparey:
                 comparey = abs(yevent - yele)
                 besty = yele
-        print bestx
-        print besty
+        for element in whitecentroids:
+            xcent = element[1]
+            ycent = element[2]
+            if xcent == bestx and ycent == besty:
+                selected = element[0]
+                oldx = xcent
+                oldy = ycent
+  
+        for element in blackcentroids:
+            xcent = element[1]
+            ycent = element[2]
+            if xcent == bestx and ycent == besty:
+                selected = element[0]
+                oldx = xcent
+                oldy = ycent
+
+
+    if clicked == 1 and selected != '':
+        xevent = event.x
+        yevent = event.y
+        comparex = 100
+        comparey = 100
+        for element in squaredata:
+            xele = element[1]
+            yele = element[2]
+            if abs(xevent - xele) < comparex:
+                comparex = abs(xevent - xele)
+                bestx = xele
+            if abs(yevent - yele) < comparey:
+                comparey = abs(yevent - yele)
+                besty = yele
+        dispx = bestx - oldx
+        dispy = besty - oldy
+        board.move(selected,dispx,dispy)
+    clicked = clicked * -1
+
+               
+board.bind('<Button-1>',reposit)
 while True:
 
-            
-        if clicked == 1:
-            clicked = 1
-        clicked = clicked * -1
     board.update()        
     
 root.mainloop()
