@@ -141,16 +141,15 @@ while xsquarecounter <=16:
         datapoint = [identifier,xavg,yavg]
         
         if alternate == 1:
-            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'red',tag = identifier)
+            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'brown',tag = identifier)
         if alternate == -1:
-            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'blue',tag = identifier)
+            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'green',tag = identifier)
         board.lower(identifier)
         
         squaredata.append(datapoint)
         ysquarecounter = ysquarecounter+1
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
-    print squaredata
 #for element in piecelist:
  #   newlist = []
   #  for coordinate in element:
@@ -328,6 +327,7 @@ while counter <=16:
     newlist.append(fixedcent)
     counter = counter + 1
 while counter <=32:
+    indexcounter = counter -1
     item1 = 'black' + str(counter)
     board.move(item1,-45,0)
     blackcent = blackcentroids[indexcounter]
@@ -347,7 +347,10 @@ def reposit(event):
     global selected
     global oldx 
     global oldy
+    global whitecentroids
+    global blackcentroids
     if clicked == -1:
+        selected = ''
         xevent = event.x
         yevent = event.y
         comparex = 100
@@ -395,9 +398,57 @@ def reposit(event):
         dispx = bestx - oldx
         dispy = besty - oldy
         board.move(selected,dispx,dispy)
-    clicked = clicked * -1
+        newlist = []
+        if selected[0] == 'b':
+            for element in blackcentroids:
 
-               
+                if element[0] == selected:
+                    datapoint = [element[0],bestx,besty]
+                    newlist.append(datapoint)
+                else:
+                    newlist.append(element)
+            blackcentroids = newlist
+        if selected[0] == 'w':
+            for element in whitecentroids:
+                if element[0] == selected:
+                    datapoint = [element[0],bestx,besty]
+                    newlist.append(datapoint)
+                else:
+                    newlist.append(element)
+            whitecentroids = newlist
+
+
+
+
+    clicked = clicked * -1
+    coordslist = []
+    for element in whitecentroids:
+        tagger = element[0]
+        xele = element[1]
+        yele = element[2]
+        for item in squaredata:
+            sqtag = item[0]
+            findx = item[1]
+            findy = item[2]
+
+            if findx == xele and findy == yele:
+                datapoint = [tagger,sqtag]
+                coordslist.append(datapoint)
+
+    for element in blackcentroids:
+        tagger = element[0]
+        xele = element[1]
+        yele = element[2]
+        for item in squaredata:
+            sqtag = item[0]
+            findx = item[1]
+            findy = item[2]
+
+            if findx == xele and findy == yele:
+                datapoint = [tagger,sqtag]
+                coordslist.append(datapoint)
+    print coordslist
+                              
 board.bind('<Button-1>',reposit)
 while True:
 
