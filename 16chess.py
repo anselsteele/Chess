@@ -83,8 +83,8 @@ piecelist.append(scaledqueen)
 piecelist.append(scaledking)
 piecelist.append(scaledpawn)
 
-startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','a1','b1','c1','d1','e1','f1','g1','h1','a8','b8','c8','d8','e8','f8','g8','h8','a7','b7','c7','d7','e7','f7','g7','h7']
-letters = ['a','b','c','d','e','f','g','h']
+startlist = ['a2','b2','c2','d2','e2','f2','g2','h2','i2','j2','k2','l2','m2','n2','o2','p2','a1','b1','c1','d1','e1','f1','g1','h1','i1','j1','k1','l1','m1','n1','o1','p1','a16','b16','c16','d16','e16','f16','g16','h16','i16','j16','k16','l16','m16','n16','o16','p16','a15','b15','c15','d15','e15','f15','g15','h15','i15','j15','k15','l15','m15','n15','o15','p15']
+letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p']
 root = Tk()
 board = Canvas(root,width = 720,height = 720)
 
@@ -127,6 +127,23 @@ while xsquarecounter <=16:
         letter1 = 'g'
     if xsquarecounter == 8:
         letter1 = 'h'
+    if xsquarecounter == 9:
+        letter1 = 'i'
+    if xsquarecounter == 10:
+        letter1 = 'j'
+    if xsquarecounter == 11:
+        letter1 = 'k'
+    if xsquarecounter == 12:
+        letter1 = 'l'
+    if xsquarecounter == 13:
+        letter1 = 'm'
+    if xsquarecounter == 14:
+        letter1 = 'n'
+    if xsquarecounter == 15:
+        letter1 = 'o'
+    if xsquarecounter == 16:
+        letter1 = 'p'
+
     while ysquarecounter <=16:
         alternate = alternate * -1
         #corners of the square
@@ -141,9 +158,9 @@ while xsquarecounter <=16:
         datapoint = [identifier,xavg,yavg]
         
         if alternate == 1:
-            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'brown',tag = identifier)
+            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'khaki',tag = identifier)
         if alternate == -1:
-            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'green',tag = identifier)
+            square = board.create_rectangle(nwcornerx,nwcornery,secornerx,secornery,fill = 'slate blue',tag = identifier)
         board.lower(identifier)
         
         squaredata.append(datapoint)
@@ -157,38 +174,38 @@ while xsquarecounter <=16:
     #    newlist.append(newcoordinate)
     #bestlist.append(newlist)
     
-board.create_polygon(piecelist[0],tag = 'white1',fill = 'white')
-board.create_polygon(piecelist[1],tag = 'white2',fill = 'white')
-board.create_polygon(piecelist[2],tag = 'white3',fill = 'white')
-board.create_polygon(piecelist[3],tag = 'white4',fill = 'white')
-board.create_polygon(piecelist[4],tag = 'white5',fill = 'white')
-board.create_polygon(piecelist[5],tag = 'white6',fill = 'white')
-board.create_polygon(piecelist[6],tag = 'white7',fill = 'white')
-board.create_polygon(piecelist[7],tag = 'white8',fill = 'white')
-board.create_polygon(piecelist[8],tag = 'white9',fill = 'white')
-board.create_polygon(piecelist[6],tag = 'white10',fill = 'white')
-board.create_polygon(piecelist[5],tag = 'white11',fill = 'white')
-board.create_polygon(piecelist[4],tag = 'white12',fill = 'white')
-board.create_polygon(piecelist[3],tag = 'white13',fill = 'white')
-board.create_polygon(piecelist[2],tag = 'white14',fill = 'white')
-board.create_polygon(piecelist[1],tag = 'white15',fill = 'white')
-board.create_polygon(piecelist[0],tag = 'white16',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white17',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white18',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white19',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white20',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white21',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white22',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white23',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white24',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white25',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white26',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white27',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white28',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white29',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white30',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white31',fill = 'white')
-board.create_polygon(piecelist[9],tag = 'white32',fill = 'white')
+board.create_polygon(piecelist[0],tag = 'white1',fill = 'light pink')
+board.create_polygon(piecelist[1],tag = 'white2',fill = 'light pink')
+board.create_polygon(piecelist[2],tag = 'white3',fill = 'light pink')
+board.create_polygon(piecelist[3],tag = 'white4',fill = 'light pink')
+board.create_polygon(piecelist[4],tag = 'white5',fill = 'light pink')
+board.create_polygon(piecelist[5],tag = 'white6',fill = 'light pink')
+board.create_polygon(piecelist[6],tag = 'white7',fill = 'light pink')
+board.create_polygon(piecelist[7],tag = 'white8',fill = 'light pink')
+board.create_polygon(piecelist[8],tag = 'white9',fill = 'light pink')
+board.create_polygon(piecelist[6],tag = 'white10',fill = 'light pink')
+board.create_polygon(piecelist[5],tag = 'white11',fill = 'light pink')
+board.create_polygon(piecelist[4],tag = 'white12',fill = 'light pink')
+board.create_polygon(piecelist[3],tag = 'white13',fill = 'light pink')
+board.create_polygon(piecelist[2],tag = 'white14',fill = 'light pink')
+board.create_polygon(piecelist[1],tag = 'white15',fill = 'light pink')
+board.create_polygon(piecelist[0],tag = 'white16',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white17',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white18',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white19',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white20',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white21',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white22',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white23',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white24',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white25',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white26',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white27',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white28',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white29',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white30',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white31',fill = 'light pink')
+board.create_polygon(piecelist[9],tag = 'white32',fill = 'light pink')
 
 board.create_polygon(piecelist[0],tag = 'black1',fill = 'black')
 board.create_polygon(piecelist[1],tag = 'black2',fill = 'black')
@@ -337,6 +354,8 @@ while counter <=32:
     newlist.append(fixedcent)
     counter = counter + 1
 blackcentroids = newlist
+
+
 clicked = -1
 oldx = 0
 oldy = 0
@@ -379,6 +398,9 @@ def reposit(event):
                 selected = element[0]
                 oldx = xcent
                 oldy = ycent
+        polycoords = board.coords(selected)
+        board.delete(selected)
+        board.create_polygon(polycoords,tag = selected,fill = 'blue')
 
 
     if clicked == 1 and selected != '':
@@ -408,6 +430,7 @@ def reposit(event):
                 else:
                     newlist.append(element)
             blackcentroids = newlist
+            fstring = 'black'
         if selected[0] == 'w':
             for element in whitecentroids:
                 if element[0] == selected:
@@ -416,6 +439,10 @@ def reposit(event):
                 else:
                     newlist.append(element)
             whitecentroids = newlist
+            fstring = 'white'
+        polycoords = board.coords(selected)
+        board.delete(selected)
+        board.create_polygon(polycoords,tag = selected,fill = fstring)
 
 
 
@@ -447,11 +474,16 @@ def reposit(event):
             if findx == xele and findy == yele:
                 datapoint = [tagger,sqtag]
                 coordslist.append(datapoint)
-    print coordslist
+    for element in coordslist:
+        if element[0] == selected:
+            sqcheck = element[1]
+    for element in coordslist:
+        if element[0] != selected and element[1] == sqcheck:
+            board.delete(element[0])
+
                               
 board.bind('<Button-1>',reposit)
 while True:
 
     board.update()        
     
-root.mainloop()
