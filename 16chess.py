@@ -3,13 +3,14 @@ import math
 piecelist = []
 newlist = []
 bestlist = []
+whiteturn = 1
 
 coordslist = [['white1', 'a1'], ['white2', 'a2'], ['white3', 'a3'], ['white4', 'a4'], ['white5', 'a5'], ['white6', 'a6'], ['white7', 'a7'], ['white8', 'a8'], ['white9', 'a9'], ['white10', 'a10'], ['white11', 'a11'], ['white12', 'a12'], ['white13', 'a13'], ['white14', 'a14'], ['white15', 'a15'], ['white16', 'a16'], ['white17', 'b1'], ['white18', 'b2'], ['white19', 'b3'], ['white20', 'b4'], ['white21', 'b5'], ['white22', 'b6'], ['white23', 'b7'], ['white24', 'b8'], ['white25', 'b9'], ['white26', 'b10'], ['white27', 'b11'], ['white28', 'b12'], ['white29', 'b13'], ['white30', 'b14'], ['white31', 'b15'], ['white32', 'b16'], ['black1', 'p1'], ['black2', 'p2'], ['black3', 'p3'], ['black4', 'p4'], ['black5', 'p5'], ['black6', 'p6'], ['black7', 'p7'], ['black8', 'p8'], ['black9', 'p9'], ['black10', 'p10'], ['black11', 'p11'], ['black12', 'p12'], ['black13', 'p13'], ['black14', 'p14'], ['black15', 'p15'], ['black16', 'p16'], ['black17', 'o1'], ['black18', 'o2'], ['black19', 'o3'], ['black20', 'o4'], ['black21', 'l5'], ['black22', 'o6'], ['black23', 'o7'], ['black24', 'o8'], ['black25', 'o9'], ['black26', 'o10'], ['black27', 'o11'], ['black28', 'o12'], ['black29', 'o13'], ['black30', 'o14'], ['black31', 'o15'], ['black32', 'o16']]
 coordslist2 = coordslist
 
 magician1 = [200, 200, 220, 200, 230, 200, 230, 230, 220, 230, 220, 240, 230, 270, 240, 270, 240, 280, 190, 280, 190, 270, 200, 270, 210, 240, 210, 230, 200, 230, 200, 200]
 pawn1 = [200, 200, 220, 200, 230, 210, 230, 230, 220, 240, 200, 240, 190, 230, 190, 210, 200, 200]
-berzerker1 = [200, 200, 200, 190, 220, 190, 220, 200, 230, 210, 240, 210, 240, 230, 230, 230, 220, 240, 220, 250, 200, 250, 200, 240, 190, 230, 180, 230, 180, 210, 190, 210, 200, 200]
+#berzerker1 = [200, 200, 200, 190, 220, 190, 220, 200, 230, 210, 240, 210, 240, 230, 230, 230, 220, 240, 220, 250, 200, 250, 200, 240, 190, 230, 180, 230, 180, 210, 190, 210, 200, 200]
 rook1 = [200, 200, 190, 200, 190, 180, 200, 180, 200, 190, 210, 190, 210, 180, 220, 180, 220, 190, 230, 190, 230, 180, 240, 180, 240, 200, 230, 200, 230, 220, 220, 220, 220, 230, 230, 260, 240, 260, 240, 270, 190, 270, 190, 260, 200, 260, 210, 230, 210, 220, 200, 220, 200, 200]
 bishop1 = [200, 200, 190, 190, 190, 170, 200, 150, 210, 150, 220, 170, 220, 190, 210, 200, 220, 230, 230, 230, 230, 240, 180, 240, 180, 230, 190, 230, 200, 200]
 knight1 = [200, 200, 200, 180, 200, 170, 230, 170, 250, 170, 250, 190, 230, 190, 230, 200, 220, 210, 230, 240, 240, 240, 240, 250, 190, 250, 190, 240, 200, 240, 210, 210, 200, 200]
@@ -18,6 +19,17 @@ queen1 = [200, 200, 190, 180, 210, 190, 220, 170, 230, 190, 250, 180, 240, 200, 
 vanguard1 = [200, 200, 190, 190, 180, 170, 180, 160, 190, 160, 190, 170, 200, 190, 210, 200, 220, 190, 230, 170, 230, 160, 240, 160, 240, 170, 230, 190, 220, 200, 230, 200, 230, 230, 220, 230, 220, 240, 230, 280, 240, 280, 240, 290, 180, 290, 180, 280, 190, 280, 200, 240, 200, 230, 190, 230, 190, 200, 200, 200]
 crusader1 = [200, 200, 200, 190, 190, 190, 180, 190, 180, 160, 170, 160, 170, 150, 190, 150, 190, 180, 200, 180, 200, 170, 230, 170, 230, 180, 240, 180, 240, 150, 260, 150, 260, 160, 250, 160, 250, 190, 230, 190, 230, 200, 220, 210, 230, 250, 240, 250, 240, 260, 190, 260, 190, 250, 200, 250, 210, 210, 200, 200]
 
+prange = [[0,0],[1,0],[0,'y',0]]
+mrange = [[1,-1],[1,-1],['x','y','xy']]
+rrange = [[1,-1],[1,-1],['x','y',0]]
+brange = [[1,-1],[1,-1],[0,0,'xy']]
+qrange = [[1,-1],[1,-1],['x','y','xy']]
+ktrange = []
+
+
+
+whitecolor = raw_input('White color?')
+blackcolor = raw_input('Black color?')
 class scaler:
     def __init__(self,scale1,polystring):
        self.polystring = polystring
@@ -369,6 +381,9 @@ def reposit(event):
     global blackcentroids
     global coordslist
     global coordslist2
+    global whiteturn
+    done = False
+    
     if clicked == -1:
         selected = ''
         xevent = event.x
@@ -384,27 +399,31 @@ def reposit(event):
             if abs(yevent - yele) < comparey:
                 comparey = abs(yevent - yele)
                 besty = yele
-        for element in whitecentroids:
-            xcent = element[1]
-            ycent = element[2]
-            if xcent == bestx and ycent == besty:
-                selected = element[0]
-                oldx = xcent
-                oldy = ycent
-  
-        for element in blackcentroids:
-            xcent = element[1]
-            ycent = element[2]
-            if xcent == bestx and ycent == besty:
-                selected = element[0]
-                oldx = xcent
-                oldy = ycent
+        if whiteturn == 1:
+            for element in whitecentroids:
+                xcent = element[1]
+                ycent = element[2]
+                if xcent == bestx and ycent == besty:
+                    selected = element[0]
+                    oldx = xcent
+                    oldy = ycent
+        if whiteturn == -1:
+            for element in blackcentroids:
+                xcent = element[1]
+                ycent = element[2]
+                if xcent == bestx and ycent == besty:
+                    selected = element[0]
+                    oldx = xcent
+                    oldy = ycent
         polycoords = board.coords(selected)
         board.delete(selected)
-        board.create_polygon(polycoords,tag = selected,fill = 'blue')
+        if polycoords != []:
+            board.create_polygon(polycoords,tag = selected,fill = 'blue')
+            done = True
 
 
     if clicked == 1 and selected != '':
+        whiteturn = whiteturn * -1
 
         if selected == 'black1' or selected == 'black16' or selected == 'white1' or selected == 'white16':
             piece = 'rook'
@@ -426,16 +445,9 @@ def reposit(event):
             piece = 'king'
         else:
             piece = 'pawn'
-        print piece
-        print selected
-        square = ''
-        print coordslist2
-        for element in coordslist2:
-            if selected == element[0]:
-                square = element[1]
-        board.delete(coordslist2)
+        #print piece
+        #print selected
 
-        print square
         xevent = event.x
         yevent = event.y
         comparex = 100
@@ -474,45 +486,53 @@ def reposit(event):
             fstring = 'red'
         polycoords = board.coords(selected)
         board.delete(selected)
+
         board.create_polygon(polycoords,tag = selected,fill = fstring)
         coordslist2 = coordslist
+        done = True
 
 
 
+    if done == True:
+        clicked = clicked * -1
+        coordslist = []
+        for element in whitecentroids:
+            tagger = element[0]
+            xele = element[1]
+            yele = element[2]
+            for item in squaredata:
+                sqtag = item[0]
+                findx = item[1]
+                findy = item[2]
 
-    clicked = clicked * -1
-    coordslist = []
-    for element in whitecentroids:
-        tagger = element[0]
-        xele = element[1]
-        yele = element[2]
-        for item in squaredata:
-            sqtag = item[0]
-            findx = item[1]
-            findy = item[2]
+                if findx == xele and findy == yele:
+                    datapoint = [tagger,sqtag]
+                    coordslist.append(datapoint)
 
-            if findx == xele and findy == yele:
-                datapoint = [tagger,sqtag]
-                coordslist.append(datapoint)
+        for element in blackcentroids:
+            tagger = element[0]
+            xele = element[1]
+            yele = element[2]
+            for item in squaredata:
+                sqtag = item[0]
+                findx = item[1]
+                findy = item[2]
 
-    for element in blackcentroids:
-        tagger = element[0]
-        xele = element[1]
-        yele = element[2]
-        for item in squaredata:
-            sqtag = item[0]
-            findx = item[1]
-            findy = item[2]
-
-            if findx == xele and findy == yele:
-                datapoint = [tagger,sqtag]
-                coordslist.append(datapoint)
-    for element in coordslist:
-        if element[0] == selected:
-            sqcheck = element[1]
-    for element in coordslist:
-        if element[0] != selected and element[1] == sqcheck:
-            board.delete(element[0])
+                if findx == xele and findy == yele:
+                    datapoint = [tagger,sqtag]
+                    coordslist.append(datapoint)
+        for element in coordslist:
+            if element[0] == selected:
+                sqcheck = element[1]
+        for element in coordslist:
+            if element[0] != selected and element[1] == sqcheck:
+                board.delete(element[0])
+        square = ''
+        for element in coordslist:
+            if selected == element[0]:
+                square = element[1]
+        if clicked == -1:
+            print square
 
                               
 board.bind('<Button-1>',reposit)
