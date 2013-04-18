@@ -4,13 +4,13 @@ piecelist = []
 newlist = []
 bestlist = []
 whiteturn = 1
-
+printcount = 1
 coordslist = [['white1', 'a1'], ['white2', 'a2'], ['white3', 'a3'], ['white4', 'a4'], ['white5', 'a5'], ['white6', 'a6'], ['white7', 'a7'], ['white8', 'a8'], ['white9', 'a9'], ['white10', 'a10'], ['white11', 'a11'], ['white12', 'a12'], ['white13', 'a13'], ['white14', 'a14'], ['white15', 'a15'], ['white16', 'a16'], ['white17', 'b1'], ['white18', 'b2'], ['white19', 'b3'], ['white20', 'b4'], ['white21', 'b5'], ['white22', 'b6'], ['white23', 'b7'], ['white24', 'b8'], ['white25', 'b9'], ['white26', 'b10'], ['white27', 'b11'], ['white28', 'b12'], ['white29', 'b13'], ['white30', 'b14'], ['white31', 'b15'], ['white32', 'b16'], ['black1', 'p1'], ['black2', 'p2'], ['black3', 'p3'], ['black4', 'p4'], ['black5', 'p5'], ['black6', 'p6'], ['black7', 'p7'], ['black8', 'p8'], ['black9', 'p9'], ['black10', 'p10'], ['black11', 'p11'], ['black12', 'p12'], ['black13', 'p13'], ['black14', 'p14'], ['black15', 'p15'], ['black16', 'p16'], ['black17', 'o1'], ['black18', 'o2'], ['black19', 'o3'], ['black20', 'o4'], ['black21', 'l5'], ['black22', 'o6'], ['black23', 'o7'], ['black24', 'o8'], ['black25', 'o9'], ['black26', 'o10'], ['black27', 'o11'], ['black28', 'o12'], ['black29', 'o13'], ['black30', 'o14'], ['black31', 'o15'], ['black32', 'o16']]
 coordslist2 = coordslist
 
 magician1 = [200, 200, 220, 200, 230, 200, 230, 230, 220, 230, 220, 240, 230, 270, 240, 270, 240, 280, 190, 280, 190, 270, 200, 270, 210, 240, 210, 230, 200, 230, 200, 200]
 pawn1 = [200, 200, 220, 200, 230, 210, 230, 230, 220, 240, 200, 240, 190, 230, 190, 210, 200, 200]
-#berzerker1 = [200, 200, 200, 190, 220, 190, 220, 200, 230, 210, 240, 210, 240, 230, 230, 230, 220, 240, 220, 250, 200, 250, 200, 240, 190, 230, 180, 230, 180, 210, 190, 210, 200, 200]
+berzerker1 = [200, 200, 200, 190, 220, 190, 220, 200, 230, 210, 240, 210, 240, 230, 230, 230, 220, 240, 220, 250, 200, 250, 200, 240, 190, 230, 180, 230, 180, 210, 190, 210, 200, 200]
 rook1 = [200, 200, 190, 200, 190, 180, 200, 180, 200, 190, 210, 190, 210, 180, 220, 180, 220, 190, 230, 190, 230, 180, 240, 180, 240, 200, 230, 200, 230, 220, 220, 220, 220, 230, 230, 260, 240, 260, 240, 270, 190, 270, 190, 260, 200, 260, 210, 230, 210, 220, 200, 220, 200, 200]
 bishop1 = [200, 200, 190, 190, 190, 170, 200, 150, 210, 150, 220, 170, 220, 190, 210, 200, 220, 230, 230, 230, 230, 240, 180, 240, 180, 230, 190, 230, 200, 200]
 knight1 = [200, 200, 200, 180, 200, 170, 230, 170, 250, 170, 250, 190, 230, 190, 230, 200, 220, 210, 230, 240, 240, 240, 240, 250, 190, 250, 190, 240, 200, 240, 210, 210, 200, 200]
@@ -30,6 +30,7 @@ ktrange = []
 
 whitecolor = raw_input('White color?')
 blackcolor = raw_input('Black color?')
+computer = raw_input('Computer? yes or no: ')
 class scaler:
     def __init__(self,scale1,polystring):
        self.polystring = polystring
@@ -185,71 +186,71 @@ while xsquarecounter <=16:
     ysquarecounter = 1
     xsquarecounter = xsquarecounter + 1
     
-board.create_polygon(piecelist[0],tag = 'white1',fill = 'red')
-board.create_polygon(piecelist[1],tag = 'white2',fill = 'red')
-board.create_polygon(piecelist[2],tag = 'white3',fill = 'red')
-board.create_polygon(piecelist[3],tag = 'white4',fill = 'red')
-board.create_polygon(piecelist[4],tag = 'white5',fill = 'red')
-board.create_polygon(piecelist[5],tag = 'white6',fill = 'red')
-board.create_polygon(piecelist[6],tag = 'white7',fill = 'red')
-board.create_polygon(piecelist[7],tag = 'white8',fill = 'red')
-board.create_polygon(piecelist[8],tag = 'white9',fill = 'red')
-board.create_polygon(piecelist[6],tag = 'white10',fill = 'red')
-board.create_polygon(piecelist[5],tag = 'white11',fill = 'red')
-board.create_polygon(piecelist[4],tag = 'white12',fill = 'red')
-board.create_polygon(piecelist[3],tag = 'white13',fill = 'red')
-board.create_polygon(piecelist[2],tag = 'white14',fill = 'red')
-board.create_polygon(piecelist[1],tag = 'white15',fill = 'red')
-board.create_polygon(piecelist[0],tag = 'white16',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white17',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white18',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white19',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white20',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white21',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white22',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white23',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white24',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white25',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white26',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white27',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white28',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white29',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white30',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white31',fill = 'red')
-board.create_polygon(piecelist[9],tag = 'white32',fill = 'red')
+board.create_polygon(piecelist[0],tag = 'white1',fill = whitecolor)
+board.create_polygon(piecelist[1],tag = 'white2',fill = whitecolor)
+board.create_polygon(piecelist[2],tag = 'white3',fill = whitecolor)
+board.create_polygon(piecelist[3],tag = 'white4',fill = whitecolor)
+board.create_polygon(piecelist[4],tag = 'white5',fill = whitecolor)
+board.create_polygon(piecelist[5],tag = 'white6',fill = whitecolor)
+board.create_polygon(piecelist[6],tag = 'white7',fill = whitecolor)
+board.create_polygon(piecelist[7],tag = 'white8',fill = whitecolor)
+board.create_polygon(piecelist[8],tag = 'white9',fill = whitecolor)
+board.create_polygon(piecelist[6],tag = 'white10',fill = whitecolor)
+board.create_polygon(piecelist[5],tag = 'white11',fill = whitecolor)
+board.create_polygon(piecelist[4],tag = 'white12',fill = whitecolor)
+board.create_polygon(piecelist[3],tag = 'white13',fill = whitecolor)
+board.create_polygon(piecelist[2],tag = 'white14',fill = whitecolor)
+board.create_polygon(piecelist[1],tag = 'white15',fill = whitecolor)
+board.create_polygon(piecelist[0],tag = 'white16',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white17',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white18',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white19',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white20',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white21',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white22',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white23',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white24',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white25',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white26',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white27',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white28',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white29',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white30',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white31',fill = whitecolor)
+board.create_polygon(piecelist[9],tag = 'white32',fill = whitecolor)
 
-board.create_polygon(piecelist[0],tag = 'black1',fill = 'black')
-board.create_polygon(piecelist[1],tag = 'black2',fill = 'black')
-board.create_polygon(piecelist[2],tag = 'black3',fill = 'black')
-board.create_polygon(piecelist[3],tag = 'black4',fill = 'black')
-board.create_polygon(piecelist[4],tag = 'black5',fill = 'black')
-board.create_polygon(piecelist[5],tag = 'black6',fill = 'black')
-board.create_polygon(piecelist[6],tag = 'black7',fill = 'black')
-board.create_polygon(piecelist[7],tag = 'black8',fill = 'black')
-board.create_polygon(piecelist[8],tag = 'black9',fill = 'black')
-board.create_polygon(piecelist[6],tag = 'black10',fill = 'black')
-board.create_polygon(piecelist[5],tag = 'black11',fill = 'black')
-board.create_polygon(piecelist[4],tag = 'black12',fill = 'black')
-board.create_polygon(piecelist[3],tag = 'black13',fill = 'black')
-board.create_polygon(piecelist[2],tag = 'black14',fill = 'black')
-board.create_polygon(piecelist[1],tag = 'black15',fill = 'black')
-board.create_polygon(piecelist[0],tag = 'black16',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black17',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black18',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black19',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black20',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black21',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black22',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black23',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black24',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black25',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black26',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black27',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black28',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black29',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black30',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black31',fill = 'black')
-board.create_polygon(piecelist[9],tag = 'black32',fill = 'black')
+board.create_polygon(piecelist[0],tag = 'black1',fill = blackcolor)
+board.create_polygon(piecelist[1],tag = 'black2',fill = blackcolor)
+board.create_polygon(piecelist[2],tag = 'black3',fill = blackcolor)
+board.create_polygon(piecelist[3],tag = 'black4',fill = blackcolor)
+board.create_polygon(piecelist[4],tag = 'black5',fill = blackcolor)
+board.create_polygon(piecelist[5],tag = 'black6',fill = blackcolor)
+board.create_polygon(piecelist[6],tag = 'black7',fill = blackcolor)
+board.create_polygon(piecelist[7],tag = 'black8',fill = blackcolor)
+board.create_polygon(piecelist[8],tag = 'black9',fill = blackcolor)
+board.create_polygon(piecelist[6],tag = 'black10',fill = blackcolor)
+board.create_polygon(piecelist[5],tag = 'black11',fill = blackcolor)
+board.create_polygon(piecelist[4],tag = 'black12',fill = blackcolor)
+board.create_polygon(piecelist[3],tag = 'black13',fill = blackcolor)
+board.create_polygon(piecelist[2],tag = 'black14',fill = blackcolor)
+board.create_polygon(piecelist[1],tag = 'black15',fill = blackcolor)
+board.create_polygon(piecelist[0],tag = 'black16',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black17',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black18',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black19',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black20',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black21',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black22',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black23',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black24',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black25',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black26',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black27',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black28',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black29',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black30',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black31',fill = blackcolor)
+board.create_polygon(piecelist[9],tag = 'black32',fill = blackcolor)
 
 whitecentroids = []
 blackcentroids = []
@@ -423,30 +424,43 @@ def reposit(event):
 
 
     if clicked == 1 and selected != '':
+        global printcount
         whiteturn = whiteturn * -1
 
         if selected == 'black1' or selected == 'black16' or selected == 'white1' or selected == 'white16':
             piece = 'rook'
         elif selected == 'black2' or selected == 'black15' or selected == 'white2' or selected == 'white15':
             piece = 'crusader'
-        elif selected =='black3' or selected == 'black14' or selected == 'white3' or selected == 'white14':
-            piece = 'magician'
+        elif selected == 'black3' or selected == 'black14' or selected == 'white3' or selected == 'white14':
+            piece = 'bishop'
+
         elif selected == 'black4' or selected == 'black13' or selected == 'white4' or selected == 'white13':
             piece = 'vanguard'
-        elif selected == 'black5' or selected == 'black12' or selected == 'white5' or selected == 'white12':
-            piece = 'bishop'
+        elif selected =='black5' or selected == 'black12' or selected == 'white5' or selected == 'white12':
+            piece = 'magician'
+
         elif selected == 'black6' or selected == 'black11' or selected == 'white6' or selected == 'white11':
-            piece = 'bishop'
-        elif selected =='black7' or selected == 'black10' or selected == 'white7' or selected == 'white10':
             piece = 'knight'
+        elif selected =='black7' or selected == 'black10' or selected == 'white7' or selected == 'white10':
+            piece = 'bishop'
         elif selected == 'black8' or selected == 'white8':
             piece = 'queen'
         elif selected == 'black9' or selected == 'white9':
             piece = 'king'
         else:
             piece = 'pawn'
-        #print piece
+
+        print str(printcount) + ':'
+        print piece
         #print selected
+
+        if whiteturn == 1:
+            printcount = printcount + 1
+
+        if blackturn == 1:
+            print computer
+            if computer == 'yes':
+                print 'computer:'
 
         xevent = event.x
         yevent = event.y
@@ -463,7 +477,9 @@ def reposit(event):
                 besty = yele
         dispx = bestx - oldx
         dispy = besty - oldy
-        board.move(selected,dispx,dispy)
+        if computer == 'no':
+            board.move(selected,dispx,dispy)
+
         newlist = []
         if selected[0] == 'b':
             for element in blackcentroids:
@@ -474,7 +490,7 @@ def reposit(event):
                 else:
                     newlist.append(element)
             blackcentroids = newlist
-            fstring = 'black'
+            fstring = blackcolor
         if selected[0] == 'w':
             for element in whitecentroids:
                 if element[0] == selected:
@@ -483,7 +499,7 @@ def reposit(event):
                 else:
                     newlist.append(element)
             whitecentroids = newlist
-            fstring = 'red'
+            fstring = whitecolor
         polycoords = board.coords(selected)
         board.delete(selected)
 
@@ -532,7 +548,8 @@ def reposit(event):
             if selected == element[0]:
                 square = element[1]
         if clicked == -1:
-            print square
+            print 'to ' + square
+
 
                               
 board.bind('<Button-1>',reposit)
